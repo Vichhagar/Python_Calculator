@@ -11,25 +11,44 @@ def ask_operation():
     return opt
 
 def calculate():
-    calculate.one = ask_input_1()
-    calculate.opt = ask_operation()
-    calculate.two = ask_input_2()
+    try:
+        calculate.one = ask_input_1()
+        calculate.opt = ask_operation()
+        calculate.two = ask_input_2()
+    except Exception:
+        print("\n")
+        print_line(25)
+        print("Please Enter a valid input!")
+        print_line(25)
+    else:
+        if calculate.opt == "+":
+            answer = calculate.one + calculate.two
+        elif calculate.opt == "-":
+            answer = calculate.one - calculate.two
+        elif calculate.opt == "*":
+            answer = calculate.one * calculate.two
+        elif calculate.opt == "/":
+            answer = calculate.one / calculate.two
 
-    if calculate.opt == "+":
-        answer = calculate.one + calculate.two
-    elif calculate.opt == "-":
-        answer = calculate.one - calculate.two
-    elif calculate.opt == "*":
-        answer = calculate.one * calculate.two
-    elif calculate.opt == "/":
-        answer = calculate.one / calculate.two
-
-    return answer
+        return answer
 
 def display():
     answer = calculate()
-    print(f"{calculate.one} {calculate.opt} {calculate.two}")
-    print(answer)
+    if answer:
+        print("\n")
+        print_line(25)
+        print("Your answer: ")
+        print(answer)
+        print_line(25)
+        print("\n")
+    else:
+        print_line(25)
+        print("No answer to be shown")
+        print_line(25)
+        print("\n")
+
+def print_line(n):
+    print("-" * n)
 
 
 comment = False
